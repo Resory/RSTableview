@@ -11,7 +11,7 @@
 @implementation UITableView (RSCategory)
 
 #pragma mark -
-#pragma mark - 普通方法
+#pragma mark - Useful Function (常用方法)
 
 // Tableview分割线偏移量
 - (void)rs_setSeparatorInsetWithCell:(UITableViewCell *)cell andEdgeInsets:(UIEdgeInsets)insets
@@ -31,5 +31,7 @@
         [cell setLayoutMargins:insets];
     }
 }
+
+
 
 @end
