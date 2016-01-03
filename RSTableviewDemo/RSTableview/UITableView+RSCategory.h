@@ -10,7 +10,7 @@
 
 @interface UITableView (RSCategory)
 
-@property (nonatomic, strong) UIView *rs_noteView;       // 提示页面
+@property (nonatomic, strong) UIView *rs_tipsView;       // 提示页面
 
 /**
  *  Tableview分割线偏移量

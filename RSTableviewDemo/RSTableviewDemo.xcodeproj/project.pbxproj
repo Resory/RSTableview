@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF0A5B7A1C38CC9600FE047D /* RSTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0A5B791C38CC9600FE047D /* RSTipsView.m */; };
 		FFB7292E1C3017700053E109 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB7292D1C3017700053E109 /* main.m */; };
 		FFB729311C3017700053E109 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB729301C3017700053E109 /* AppDelegate.m */; };
 		FFB729341C3017700053E109 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB729331C3017700053E109 /* ViewController.m */; };
@@ -15,6 +16,7 @@
 		FFB7293C1C3017700053E109 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFB7293A1C3017700053E109 /* LaunchScreen.storyboard */; };
 		FFB729471C3017700053E109 /* RSTableviewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB729461C3017700053E109 /* RSTableviewDemoTests.m */; };
 		FFB729521C3017700053E109 /* RSTableviewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB729511C3017700053E109 /* RSTableviewDemoUITests.m */; };
+		FFB729651C301C630053E109 /* UITableView+RSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB729641C301C630053E109 /* UITableView+RSCategory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF0A5B781C38CC9600FE047D /* RSTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTipsView.h; sourceTree = "<group>"; };
+		FF0A5B791C38CC9600FE047D /* RSTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTipsView.m; sourceTree = "<group>"; };
 		FFB729291C3017700053E109 /* RSTableviewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSTableviewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB7292D1C3017700053E109 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFB7292F1C3017700053E109 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		FFB7294D1C3017700053E109 /* RSTableviewDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSTableviewDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB729511C3017700053E109 /* RSTableviewDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSTableviewDemoUITests.m; sourceTree = "<group>"; };
 		FFB729531C3017700053E109 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFB729631C301C630053E109 /* UITableView+RSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+RSCategory.h"; sourceTree = "<group>"; };
+		FFB729641C301C630053E109 /* UITableView+RSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+RSCategory.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 		FFB729201C3017700053E109 = {
 			isa = PBXGroup;
 			children = (
+				FFB7295F1C301B790053E109 /* RSTableview */,
 				FFB7292B1C3017700053E109 /* RSTableviewDemo */,
 				FFB729451C3017700053E109 /* RSTableviewDemoTests */,
 				FFB729501C3017700053E109 /* RSTableviewDemoUITests */,
@@ -138,6 +145,17 @@
 				FFB729531C3017700053E109 /* Info.plist */,
 			);
 			path = RSTableviewDemoUITests;
+			sourceTree = "<group>";
+		};
+		FFB7295F1C301B790053E109 /* RSTableview */ = {
+			isa = PBXGroup;
+			children = (
+				FFB729631C301C630053E109 /* UITableView+RSCategory.h */,
+				FFB729641C301C630053E109 /* UITableView+RSCategory.m */,
+				FF0A5B781C38CC9600FE047D /* RSTipsView.h */,
+				FF0A5B791C38CC9600FE047D /* RSTipsView.m */,
+			);
+			path = RSTableview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,7 +289,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFB729341C3017700053E109 /* ViewController.m in Sources */,
+				FF0A5B7A1C38CC9600FE047D /* RSTipsView.m in Sources */,
 				FFB729311C3017700053E109 /* AppDelegate.m in Sources */,
+				FFB729651C301C630053E109 /* UITableView+RSCategory.m in Sources */,
 				FFB7292E1C3017700053E109 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +432,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RSTableviewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.resory.RSTableviewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -423,6 +444,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RSTableviewDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.resory.RSTableviewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -496,6 +518,7 @@
 				FFB729581C3017700053E109 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FFB729591C3017700053E109 /* Build configuration list for PBXNativeTarget "RSTableviewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +527,7 @@
 				FFB7295B1C3017700053E109 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FFB7295C1C3017700053E109 /* Build configuration list for PBXNativeTarget "RSTableviewDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +536,7 @@
 				FFB7295E1C3017700053E109 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

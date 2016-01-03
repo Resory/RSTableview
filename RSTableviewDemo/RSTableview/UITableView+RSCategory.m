@@ -9,24 +9,24 @@
 #import "UITableView+RSCategory.h"
 #import <objc/runtime.h>
 
-static char rsNoteViewKey;
+static char rsTipsViewKey;
 
 @implementation UITableView (RSCategory)
 
 #pragma mark -
 #pragma mark - Setter
-- (void)setRs_noteView:(UIView *)rs_noteView
+- (void)setRs_tipsView:(UIView *)rs_tipsView
 {
-    objc_setAssociatedObject(self, &rsNoteViewKey, rs_noteView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    rs_noteView.center = self.center;
-    [self addSubview:rs_noteView];
+    objc_setAssociatedObject(self, &rsTipsViewKey, rs_tipsView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    rs_tipsView.center = self.center;
+    [self addSubview:rs_tipsView];
 }
 
 #pragma mark -
 #pragma mark - Getter
-- (UIView *)rs_noteView
+- (UIView *)rs_tipsView
 {
-    return objc_getAssociatedObject(self, &rsNoteViewKey);
+    return objc_getAssociatedObject(self, &rsTipsViewKey);
 }
 
 
