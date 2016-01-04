@@ -13,6 +13,7 @@ static char rsTipsViewKey;
 
 @implementation UITableView (RSCategory)
 
+
 #pragma mark -
 #pragma mark - Setter
 - (void)setRs_tipsView:(UIView *)rs_tipsView
@@ -28,6 +29,19 @@ static char rsTipsViewKey;
 {
     return objc_getAssociatedObject(self, &rsTipsViewKey);
 }
+
+#pragma mark -
+#pragma mark -  Action
+- (void)showTipsView
+{
+    
+}
+
+- (void)hideTipsView
+{
+    
+}
+
 
 
 #pragma mark -

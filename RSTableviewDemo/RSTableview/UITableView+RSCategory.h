@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RSTipsView.h"
 
 @interface UITableView (RSCategory)
 
-@property (nonatomic, strong) UIView *rs_tipsView;       // 提示页面
+@property (nonatomic, strong) RSTipsView *rs_tipsView;       // 提示页面
 
 /**
  *  Tableview分割线偏移量
@@ -19,5 +20,7 @@
  *  @param insets 偏移量
  */
 - (void)rs_setSeparatorInsetWithCell:(UITableViewCell *)cell andEdgeInsets:(UIEdgeInsets)insets;
+
+- (void)showTipsView;
 
 @end
