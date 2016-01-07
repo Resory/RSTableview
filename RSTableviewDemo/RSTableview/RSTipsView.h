@@ -10,4 +10,6 @@
 
 @interface RSTipsView : UIView
 
+@property (nonatomic, strong) NSString *rs_note;       // 提示文字
+
 @end

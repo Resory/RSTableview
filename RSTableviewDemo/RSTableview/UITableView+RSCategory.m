@@ -9,39 +9,19 @@
 #import "UITableView+RSCategory.h"
 #import <objc/runtime.h>
 
-static char rsTipsViewKey;
+#define RS_SYS_DEVICE_WIDTH    ([[UIScreen mainScreen] bounds].size.width)                 //屏幕宽度
+#define RS_SYS_DEVICE_HEIGHT   ([[UIScreen mainScreen] bounds].size.height)                //屏幕长度
+
+static char RSTipViewKey;
 
 @implementation UITableView (RSCategory)
 
-
-#pragma mark -
-#pragma mark - Setter
-- (void)setRs_tipsView:(UIView *)rs_tipsView
-{
-    objc_setAssociatedObject(self, &rsTipsViewKey, rs_tipsView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    rs_tipsView.center = self.center;
-    [self addSubview:rs_tipsView];
-}
-
 #pragma mark -
 #pragma mark - Getter
-- (UIView *)rs_tipsView
+- (UIView *)rs_tipView
 {
-    return objc_getAssociatedObject(self, &rsTipsViewKey);
+    return objc_getAssociatedObject(self, &RSTipViewKey);
 }
-
-#pragma mark -
-#pragma mark -  Action
-- (void)showTipsView
-{
-    
-}
-
-- (void)hideTipsView
-{
-    
-}
-
 
 
 #pragma mark -
@@ -65,6 +45,29 @@ static char rsTipsViewKey;
         [cell setLayoutMargins:insets];
     }
 }
+
+#pragma mark -
+#pragma mark -  Note Action
+// 显示提示页面(无数据，超时等等)
+- (void)showTipsViewWithNote:(NSString *)note
+{
+    if(self.rs_tipView)
+    {
+        self.rs_tipView.rs_note = note;
+    }
+    else
+    {
+        UIView *tView = [[RSTipsView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        objc_setAssociatedObject(self, &RSTipViewKey, tView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        self.rs_tipView.center = self.center;
+        self.rs_tipView.rs_note = note;
+        [self addSubview:self.rs_tipView];
+    }
+}
+
+
+
+
 
 
 

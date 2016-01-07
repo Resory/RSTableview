@@ -11,7 +11,7 @@
 
 @interface UITableView (RSCategory)
 
-@property (nonatomic, strong) RSTipsView *rs_tipsView;       // 提示页面
+@property (nonatomic, strong, readonly) RSTipsView *rs_tipView;       // 提示页面
 
 /**
  *  Tableview分割线偏移量
@@ -21,6 +21,11 @@
  */
 - (void)rs_setSeparatorInsetWithCell:(UITableViewCell *)cell andEdgeInsets:(UIEdgeInsets)insets;
 
-- (void)showTipsView;
+/**
+ *  显示提示页面(无数据，超时等等)
+ *
+ *  @param note 提示文字
+ */
+- (void)showTipsViewWithNote:(NSString *)note;
 
 @end

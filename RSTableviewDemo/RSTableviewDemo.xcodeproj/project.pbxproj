@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0308309E1C3E51AC0032641F /* RSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0308309D1C3E51AC0032641F /* RSTableViewController.m */; };
 		FF0A5B7A1C38CC9600FE047D /* RSTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0A5B791C38CC9600FE047D /* RSTipsView.m */; };
 		FFB7292E1C3017700053E109 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB7292D1C3017700053E109 /* main.m */; };
 		FFB729311C3017700053E109 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB729301C3017700053E109 /* AppDelegate.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0308309C1C3E51AC0032641F /* RSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTableViewController.h; sourceTree = "<group>"; };
+		0308309D1C3E51AC0032641F /* RSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTableViewController.m; sourceTree = "<group>"; };
 		FF0A5B781C38CC9600FE047D /* RSTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTipsView.h; sourceTree = "<group>"; };
 		FF0A5B791C38CC9600FE047D /* RSTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTipsView.m; sourceTree = "<group>"; };
 		FFB729291C3017700053E109 /* RSTableviewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSTableviewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +113,8 @@
 			children = (
 				FFB7292F1C3017700053E109 /* AppDelegate.h */,
 				FFB729301C3017700053E109 /* AppDelegate.m */,
+				0308309C1C3E51AC0032641F /* RSTableViewController.h */,
+				0308309D1C3E51AC0032641F /* RSTableViewController.m */,
 				FFB729321C3017700053E109 /* ViewController.h */,
 				FFB729331C3017700053E109 /* ViewController.m */,
 				FFB729351C3017700053E109 /* Main.storyboard */,
@@ -288,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0308309E1C3E51AC0032641F /* RSTableViewController.m in Sources */,
 				FFB729341C3017700053E109 /* ViewController.m in Sources */,
 				FF0A5B7A1C38CC9600FE047D /* RSTipsView.m in Sources */,
 				FFB729311C3017700053E109 /* AppDelegate.m in Sources */,
