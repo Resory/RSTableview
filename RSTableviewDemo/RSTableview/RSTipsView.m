@@ -27,6 +27,7 @@
         self.rs_noteBtn.backgroundColor = [UIColor orangeColor];
         self.rs_noteBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
         [self.rs_noteBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.rs_noteBtn addTarget:self action:@selector(clickNoteBtn) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.rs_noteBtn];
     }
     
@@ -41,6 +42,13 @@
     {
         [self.rs_noteBtn setTitle:rs_note forState:UIControlStateNormal];
     }
+}
+
+#pragma mark -
+#pragma mark - Action
+- (void)clickNoteBtn
+{
+    self.rs_clickNoteViewBlock();
 }
 
 @end

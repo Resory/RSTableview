@@ -13,8 +13,16 @@
 #define RS_SYS_DEVICE_HEIGHT   ([[UIScreen mainScreen] bounds].size.height)                //屏幕长度
 
 static char RSTipViewKey;
+static char RSClickTipViewBlockKey;
 
 @implementation UITableView (RSCategory)
+
+#pragma mark -
+#pragma mark - Setter
+- (void)setRs_clickTipViewBlock:(RSClickTipViewBlock)rs_clickTipViewBlock
+{
+    objc_setAssociatedObject(self, &RSClickTipViewBlockKey, rs_clickTipViewBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 #pragma mark -
 #pragma mark - Getter
@@ -23,10 +31,14 @@ static char RSTipViewKey;
     return objc_getAssociatedObject(self, &RSTipViewKey);
 }
 
+- (RSClickTipViewBlock)rs_clickTipViewBlock
+{
+    return objc_getAssociatedObject(self, &RSClickTipViewBlockKey);
+}
+
 
 #pragma mark -
 #pragma mark - Useful Function (常用方法)
-
 // Tableview分割线偏移量
 - (void)rs_setSeparatorInsetWithCell:(UITableViewCell *)cell andEdgeInsets:(UIEdgeInsets)insets
 {
@@ -47,9 +59,9 @@ static char RSTipViewKey;
 }
 
 #pragma mark -
-#pragma mark -  Note Action
+#pragma mark -  Action
 // 显示提示页面(无数据，超时等等)
-- (void)showTipsViewWithNote:(NSString *)note
+- (void)showTipViewWithNote:(NSString *)note
 {
     if(self.rs_tipView)
     {
@@ -61,10 +73,18 @@ static char RSTipViewKey;
         objc_setAssociatedObject(self, &RSTipViewKey, tView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         self.rs_tipView.center = self.center;
         self.rs_tipView.rs_note = note;
+        self.rs_tipView.rs_clickNoteViewBlock = self.rs_clickTipViewBlock;
         [self addSubview:self.rs_tipView];
     }
+    
+    self.rs_tipView.hidden = NO;
 }
 
+// 隐藏提示页面
+- (void)dimissTipView
+{
+    self.rs_tipView.hidden = YES;
+}
 
 
 

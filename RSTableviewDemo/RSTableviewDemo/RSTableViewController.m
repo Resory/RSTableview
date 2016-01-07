@@ -20,8 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self configServerData];
-    
     [self configTableview];
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -41,6 +39,10 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"刷新中~"];
     [self.refreshControl addTarget:self action:@selector(sendRequestToServer) forControlEvents:UIControlEventValueChanged];
+    
+    self.tableView.rs_clickTipViewBlock = ^(){
+        NSLog(@"test.");
+    };
 }
 
 - (void)configServerData
@@ -89,10 +91,13 @@
 // 延迟操作
 - (void)delayAction
 {
+    NSLog(@"delayation");
+    
     if(self.serverData.count == 0 )
     {
-        [self.tableView showTipsViewWithNote:@"无数据!"];
+        [self.tableView showTipViewWithNote:@"无数据!"];
     }
+    
     // tableView停止转动
     [self.refreshControl endRefreshing];
 }

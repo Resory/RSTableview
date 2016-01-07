@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "RSTipsView.h"
 
+typedef void(^RSClickTipViewBlock)();       // 点击提示页面回调block
+
 @interface UITableView (RSCategory)
 
-@property (nonatomic, strong, readonly) RSTipsView *rs_tipView;       // 提示页面
+@property (nonatomic, strong, readonly) RSTipsView *rs_tipView;             // 提示页面
+@property (nonatomic, assign) RSClickTipViewBlock rs_clickTipViewBlock;     // 点击提示页面回调block
 
 /**
  *  Tableview分割线偏移量
@@ -26,6 +29,6 @@
  *
  *  @param note 提示文字
  */
-- (void)showTipsViewWithNote:(NSString *)note;
+- (void)showTipViewWithNote:(NSString *)note;
 
 @end
