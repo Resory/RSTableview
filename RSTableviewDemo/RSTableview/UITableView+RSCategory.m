@@ -13,15 +13,16 @@
 #define RS_SYS_DEVICE_HEIGHT   ([[UIScreen mainScreen] bounds].size.height)                //屏幕长度
 
 static char RSTipViewKey;
-static char RSClickTipViewBlockKey;
+static char RSTapTipViewBlockKey;
 
 @implementation UITableView (RSCategory)
 
 #pragma mark -
 #pragma mark - Setter
-- (void)setRs_clickTipViewBlock:(RSClickTipViewBlock)rs_clickTipViewBlock
+- (void)setRs_tapTipViewBlock:(RSTapTipViewBlock)rs_tapTipViewBlock
 {
-    objc_setAssociatedObject(self, &RSClickTipViewBlockKey, rs_clickTipViewBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, &RSTapTipViewBlockKey,
+                             rs_tapTipViewBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 #pragma mark -
@@ -31,14 +32,14 @@ static char RSClickTipViewBlockKey;
     return objc_getAssociatedObject(self, &RSTipViewKey);
 }
 
-- (RSClickTipViewBlock)rs_clickTipViewBlock
+- (RSTapTipViewBlock)rs_tapTipViewBlock
 {
-    return objc_getAssociatedObject(self, &RSClickTipViewBlockKey);
+    return objc_getAssociatedObject(self, &RSTapTipViewBlockKey);
 }
 
 
 #pragma mark -
-#pragma mark - Useful Function (常用方法)
+#pragma mark - Useful Function
 // Tableview分割线偏移量
 - (void)rs_setSeparatorInsetWithCell:(UITableViewCell *)cell andEdgeInsets:(UIEdgeInsets)insets
 {
@@ -61,7 +62,7 @@ static char RSClickTipViewBlockKey;
 #pragma mark -
 #pragma mark -  Action
 // 显示提示页面(无数据，超时等等)
-- (void)showTipViewWithNote:(NSString *)note
+- (void)rs_showTipViewWithNote:(NSString *)note
 {
     if(self.rs_tipView)
     {
@@ -73,7 +74,7 @@ static char RSClickTipViewBlockKey;
         objc_setAssociatedObject(self, &RSTipViewKey, tView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         self.rs_tipView.center = self.center;
         self.rs_tipView.rs_note = note;
-        self.rs_tipView.rs_clickNoteViewBlock = self.rs_clickTipViewBlock;
+        self.rs_tipView.delegate = self;
         [self addSubview:self.rs_tipView];
     }
     
@@ -81,9 +82,20 @@ static char RSClickTipViewBlockKey;
 }
 
 // 隐藏提示页面
-- (void)dimissTipView
+- (void)rs_dimissTipView
 {
     self.rs_tipView.hidden = YES;
+}
+
+
+#pragma mark -
+#pragma mark - RSTipView Protocal
+// 点击RSTipsView
+- (void)rs_tapTipView
+{
+    [self rs_dimissTipView];
+    
+    self.rs_tapTipViewBlock(@"");
 }
 
 

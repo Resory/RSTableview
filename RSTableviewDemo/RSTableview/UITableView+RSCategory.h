@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "RSTipsView.h"
 
-typedef void(^RSClickTipViewBlock)();       // 点击提示页面回调block
+typedef void(^RSTapTipViewBlock)(id obj);       // 点击提示页面回调block
 
-@interface UITableView (RSCategory)
+@interface UITableView (RSCategory) <RSTipViewProtocal>
 
 @property (nonatomic, strong, readonly) RSTipsView *rs_tipView;             // 提示页面
-@property (nonatomic, assign) RSClickTipViewBlock rs_clickTipViewBlock;     // 点击提示页面回调block
+@property (nonatomic, assign) RSTapTipViewBlock rs_tapTipViewBlock;     // 点击提示页面回调block
 
 /**
  *  Tableview分割线偏移量
@@ -29,6 +29,6 @@ typedef void(^RSClickTipViewBlock)();       // 点击提示页面回调block
  *
  *  @param note 提示文字
  */
-- (void)showTipViewWithNote:(NSString *)note;
+- (void)rs_showTipViewWithNote:(NSString *)note;
 
 @end

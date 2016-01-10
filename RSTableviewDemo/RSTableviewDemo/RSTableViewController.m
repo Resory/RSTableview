@@ -8,6 +8,7 @@
 
 #import "RSTableViewController.h"
 #import "UITableView+RSCategory.h"
+#import <MJRefresh/MJRefresh.h>
 
 @interface RSTableViewController ()
 
@@ -32,27 +33,27 @@
 
 #pragma mark -
 #pragma mark -  Config
-
+// 初始化 tableview
 - (void)configTableview
 {
     self.tableView.tableFooterView = [UIView new];
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"刷新中~"];
-    [self.refreshControl addTarget:self action:@selector(sendRequestToServer) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addLegendHeaderWithRefreshingTarget:self
+                                       refreshingAction:@selector(sendRequestToServer)];
     
-    self.tableView.rs_clickTipViewBlock = ^(){
-        NSLog(@"test.");
+    __weak RSTableViewController *weakself = self;
+    self.tableView.rs_tapTipViewBlock = ^(id obj){
+        [weakself.tableView.header beginRefreshing];
     };
 }
 
+// 初始化 serverData
 - (void)configServerData
 {
-    self.serverData = @[@"d",@"dd"];
+    self.serverData = @[@"test one",@"test two"];
 }
 
 #pragma mark -
 #pragma mark - Tableview Func
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _serverData.count;
@@ -95,11 +96,10 @@
     
     if(self.serverData.count == 0 )
     {
-        [self.tableView showTipViewWithNote:@"无数据!"];
+        [self.tableView rs_showTipViewWithNote:@"无数据!"];
     }
-    
     // tableView停止转动
-    [self.refreshControl endRefreshing];
+    [self.tableView.header endRefreshing];
 }
 
 @end

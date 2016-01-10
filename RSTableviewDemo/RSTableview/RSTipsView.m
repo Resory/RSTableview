@@ -10,7 +10,7 @@
 
 @interface RSTipsView ()
 
-@property (nonatomic, strong) UIButton *rs_noteBtn;     // 提示页面
+@property (nonatomic, strong) UILabel *rs_noteLable;     // 提示页面
 
 @end
 
@@ -22,13 +22,8 @@
     
     if(self)
     {
-        self.rs_noteBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 50)];
-        self.rs_noteBtn.center = self.center;
-        self.rs_noteBtn.backgroundColor = [UIColor orangeColor];
-        self.rs_noteBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
-        [self.rs_noteBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self.rs_noteBtn addTarget:self action:@selector(clickNoteBtn) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.rs_noteBtn];
+        [self configNoteLable];
+        [self configSelfView];
     }
     
     return self;
@@ -40,15 +35,44 @@
 {
     if(rs_note.length > 0)
     {
-        [self.rs_noteBtn setTitle:rs_note forState:UIControlStateNormal];
+        self.rs_noteLable.text = rs_note;
     }
 }
 
 #pragma mark -
-#pragma mark - Action
-- (void)clickNoteBtn
+#pragma mark -  config
+
+// 初始化 提示语句lable
+- (void)configNoteLable
 {
-    self.rs_clickNoteViewBlock();
+    self.rs_noteLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 50)];
+    self.rs_noteLable.center = self.center;
+    self.rs_noteLable.backgroundColor = [UIColor orangeColor];
+    self.rs_noteLable.font = [UIFont systemFontOfSize:14.0];
+    self.rs_noteLable.textColor = [UIColor blackColor];
+    self.rs_noteLable.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:self.rs_noteLable];
 }
+
+// 初始化 SelfView
+- (void)configSelfView
+{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(tapSelfView)];
+    self.userInteractionEnabled = YES;
+    [self addGestureRecognizer:tap];
+}
+
+#pragma mark -
+#pragma mark - Action
+// 点击 SelfView
+- (void)tapSelfView
+{
+    if([self.delegate respondsToSelector:@selector(rs_tapTipView)])
+    {
+        [self.delegate rs_tapTipView];
+    }
+}
+
 
 @end
